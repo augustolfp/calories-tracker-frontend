@@ -7,7 +7,7 @@ import DaySummaryTemplate from '../DaySummaryTemplate/DaySummaryTemplate';
 import styled from 'styled-components';
 
 export default function HomePage() {
-  const { token, API_URL } = React.useContext(UserContext);
+  const { token, API_URL, userData } = React.useContext(UserContext);
   const [daysArr, setDaysArr] = useState([]);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ export default function HomePage() {
 
   return (
     <PageTemplate>
+      <h2>Bem vindo, {userData.name}</h2>
       <CountedDaysContainer>
         {daysArr.length > 0 ? (
           daysArr.map((day, index) => <DaySummaryTemplate key={index} {...day} />)

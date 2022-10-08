@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import CredentialsTemplate from '../CredentialsTemplate/CredentialsTemplate';
+import PageTemplate from '../PageTemplate/PageTemplate';
 
 export default function SignInPage() {
   const navigate = useNavigate();
@@ -41,31 +42,33 @@ export default function SignInPage() {
   }
 
   return (
-    <CredentialsTemplate>
-      <Form onSubmit={handleLogin}>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="email"
-          disabled={isDisabled}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="senha"
-          disabled={isDisabled}
-          required
-        />
-        <button type="submit" disabled={isDisabled}>
-          ENTRAR
-        </button>
-      </Form>
-    </CredentialsTemplate>
+    <PageTemplate>
+      <CredentialsTemplate>
+        <Form onSubmit={handleLogin}>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="email"
+            disabled={isDisabled}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="senha"
+            disabled={isDisabled}
+            required
+          />
+          <button type="submit" disabled={isDisabled}>
+            ENTRAR
+          </button>
+        </Form>
+      </CredentialsTemplate>
+    </PageTemplate>
   );
 }
 

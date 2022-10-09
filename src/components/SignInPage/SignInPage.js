@@ -75,4 +75,49 @@ export default function SignInPage() {
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+
+  input {
+    box-sizing: border-box;
+    height: 46px;
+    border: 2px solid #f39227ff;
+    border-radius: 5px;
+    font-family: 'ItcFeniceRegularOblique';
+    font-size: 20px;
+    margin: 3px 0;
+    padding: 0 6px;
+
+    ::placeholder {
+      color: #94167fff;
+    }
+  }
+
+  input:disabled {
+    opacity: 0.5;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline-offset: 0px;
+    outline: none;
+
+    ::placeholder {
+      opacity: 0.5;
+    }
+  }
+
+  button {
+    height: 46px;
+    border-style: none;
+    border-radius: 4px;
+    background-color: #94167fff;
+    font-family: 'ItcFeniceRegularOblique';
+    font-size: 22px;
+    color: white;
+    margin: 3px 0 18px 0;
+  }
+
+  button:disabled {
+    opacity: 0.5;
+  }
 `;

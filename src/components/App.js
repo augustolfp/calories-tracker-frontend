@@ -1,4 +1,5 @@
 import '../assets/styles/reset.css';
+import '../assets/styles/index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import UserContext from '../contexts/UserContext';

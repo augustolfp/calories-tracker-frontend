@@ -11,4 +11,5 @@ const Container = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100%;
+  background-color: #f9ac53ff;
 `;

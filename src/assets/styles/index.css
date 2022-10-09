@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Lazer84';
+  src: local('Lazer84'), url('../fonts/Lazer84.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ItcFeniceRegularOblique';
+  src: local('ItcFeniceRegularOblique'),
+    url('../fonts/ItcFeniceRegularOblique.otf') format('opentype');
+}

@@ -5,9 +5,11 @@ import axios from 'axios';
 import PageTemplate from '../PageTemplate/PageTemplate';
 import DaySummaryTemplate from '../DaySummaryTemplate/DaySummaryTemplate';
 import styled from 'styled-components';
+import CreateDayTemplate from '../CreateDayTemplate/CreateDayTemplate';
 
 export default function HomePage() {
   const { token, API_URL, userData, setUserData } = React.useContext(UserContext);
+  const [displayCreator, setDisplayCreator] = React.useState(false);
 
   useEffect(() => {
     const countedDaysRequest = async () => {
@@ -35,6 +37,8 @@ export default function HomePage() {
           <h2>Não há dias registrados ainda!</h2>
         )}
       </CountedDaysContainer>
+      <button onClick={() => setDisplayCreator(!displayCreator)}>+</button>
+      {displayCreator && <CreateDayTemplate />}
     </PageTemplate>
   );
 }

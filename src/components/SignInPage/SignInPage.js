@@ -3,8 +3,8 @@ import UserContext from '../../contexts/UserContext';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import CredentialsTemplate from '../CredentialsTemplate/CredentialsTemplate';
-import PageTemplate from '../PageTemplate/PageTemplate';
+import CredentialsTemplate from '../Templates/CredentialsTemplate/CredentialsTemplate';
+import PageTemplate from '../Templates/PageTemplate/PageTemplate';
 
 export default function SignInPage() {
   const navigate = useNavigate();
@@ -79,7 +79,7 @@ const Form = styled.form`
   input {
     box-sizing: border-box;
     height: 46px;
-    border: 2px solid #f39227ff;
+    border: 2px solid #94167fff;
     border-radius: 5px;
     font-family: 'ItcFeniceRegularOblique';
     font-size: 20px;

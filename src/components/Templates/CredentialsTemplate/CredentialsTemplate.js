@@ -1,5 +1,5 @@
 import React from 'react';
-import vaporWaveBanana from '../../assets/images/vaporwaveBanana.svg';
+import vaporWaveBanana from '../../../assets/images/vaporwaveBanana.svg';
 import styled from 'styled-components';
 
 export default function CredentialsTemplate(props) {

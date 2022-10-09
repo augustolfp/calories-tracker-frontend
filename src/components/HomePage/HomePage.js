@@ -2,10 +2,10 @@ import UserContext from '../../contexts/UserContext';
 import React from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
-import PageTemplate from '../PageTemplate/PageTemplate';
-import DaySummaryTemplate from '../DaySummaryTemplate/DaySummaryTemplate';
+import PageTemplate from '../Templates/PageTemplate/PageTemplate';
+import DaySummaryTemplate from '../Templates/DaySummaryTemplate/DaySummaryTemplate';
 import styled from 'styled-components';
-import CreateDayTemplate from '../CreateDayTemplate/CreateDayTemplate';
+import CreateDayTemplate from '../Templates/CreateDayTemplate/CreateDayTemplate';
 
 export default function HomePage() {
   const { token, API_URL, userData, setUserData } = React.useContext(UserContext);
@@ -29,7 +29,7 @@ export default function HomePage() {
 
   return (
     <PageTemplate>
-      <h2>Bem vindo, {userData.name}</h2>
+      <WelcomeContainer>Seja bem vindo, {userData.name}!</WelcomeContainer>
       <CountedDaysContainer>
         {userData.days && userData.days.length > 0 ? (
           userData.days.map((day, index) => <DaySummaryTemplate key={index} {...day} />)
@@ -46,4 +46,10 @@ export default function HomePage() {
 const CountedDaysContainer = styled.div`
   display: flex;
   width: 70vw;
+`;
+
+const WelcomeContainer = styled.h2`
+  font-family: 'ItcFeniceRegularOblique';
+  color: #94167fff;
+  font-size: 30px;
 `;

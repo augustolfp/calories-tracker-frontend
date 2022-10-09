@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import PageTemplate from '../PageTemplate/PageTemplate';
+import PageTemplate from '../Templates/PageTemplate/PageTemplate';
 import UserContext from '../../contexts/UserContext';
 import { useParams } from 'react-router-dom';
 import React from 'react';
-import MealTemplate from '../MealTemplate/MealTemplate';
+import MealTemplate from '../Templates/MealTemplate/MealTemplate';
 export default function DayDetailsPage() {
   const { userData } = React.useContext(UserContext);
   const { id } = useParams();

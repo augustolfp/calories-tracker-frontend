@@ -5,6 +5,7 @@ import UserContext from '../contexts/UserContext';
 import SignInPage from './SignInPage/SignInPage';
 import SignUpPage from './SignUpPage/SignUpPage';
 import HomePage from './HomePage/HomePage';
+import DayDetailsPage from './DayDetailsPage/DayDetailsPage';
 
 export default function App() {
   // eslint-disable-next-line no-undef
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/day/:id" element={<DayDetailsPage />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 import weekday from 'dayjs/plugin/weekday';
 dayjs.extend(weekday);
@@ -12,10 +13,11 @@ const daysInPtBr = [
   'Sábado'
 ];
 export default function DaySummaryTemplate(props) {
+  const navigate = useNavigate();
   const formattedDay = dayjs(props.day).format('DD-MM-YYYY');
   const weekDay = daysInPtBr[dayjs(props.day).weekday()];
   return (
-    <Container>
+    <Container onClick={() => navigate(`/day/${props.id}`)}>
       <h2>{formattedDay}</h2>
       <h2>{weekDay}</h2>
       <h3>Energia: {props.kcals} kCal</h3>

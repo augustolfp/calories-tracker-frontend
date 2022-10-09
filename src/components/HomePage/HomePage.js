@@ -29,7 +29,6 @@ export default function HomePage() {
 
   return (
     <PageTemplate>
-      <WelcomeContainer>Seja bem vindo, {userData.name}!</WelcomeContainer>
       <CountedDaysContainer>
         {userData.days && userData.days.length > 0 ? (
           userData.days.map((day, index) => <DaySummaryTemplate key={index} {...day} />)
@@ -46,10 +45,4 @@ export default function HomePage() {
 const CountedDaysContainer = styled.div`
   display: flex;
   width: 70vw;
-`;
-
-const WelcomeContainer = styled.h2`
-  font-family: 'ItcFeniceRegularOblique';
-  color: #94167fff;
-  font-size: 30px;
 `;

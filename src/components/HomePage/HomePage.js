@@ -36,7 +36,7 @@ export default function HomePage() {
           <h2>Não há dias registrados ainda!</h2>
         )}
       </CountedDaysContainer>
-      <button onClick={() => setDisplayCreator(!displayCreator)}>+</button>
+      <AddButton onClick={() => setDisplayCreator(!displayCreator)}>+</AddButton>
       {displayCreator && <CreateDayTemplate />}
     </PageTemplate>
   );
@@ -45,4 +45,16 @@ export default function HomePage() {
 const CountedDaysContainer = styled.div`
   display: flex;
   width: 70vw;
+`;
+
+const AddButton = styled.button`
+  height: 80px;
+  width: 80px;
+  border-style: none;
+  border-radius: 18px;
+  background-color: #94167fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  color: white;
+  margin: 3px 0 18px 0;
 `;

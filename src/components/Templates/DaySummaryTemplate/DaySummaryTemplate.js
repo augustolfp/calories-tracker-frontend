@@ -52,6 +52,7 @@ const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 24px;
   margin: 5px;
+  width: 460px;
 
   > h2 {
     font-weight: bold;
@@ -75,7 +76,6 @@ const LeftColumn = styled.div`
 const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 200px;
 
   > h5 {
     font-family: 'Roboto', sans-serif;

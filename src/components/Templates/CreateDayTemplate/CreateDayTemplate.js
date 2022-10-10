@@ -39,46 +39,50 @@ export default function CreateDayTemplate() {
   return (
     <Container>
       <h2>Adicionar dia</h2>
-      <form onSubmit={handleDayCreation}>
-        <DateSelector newDate={newDate} setNewDate={setNewDate} disabled={isDisabled} />
-        <input
-          type="text"
-          name="notes"
-          value={newNotes}
-          placeholder="Anotações"
-          disabled={isDisabled}
-          onChange={(e) => setNewNotes(e.target.value)}
-        />
-        <input
-          type="number"
-          name="caloriesTarget"
-          placeholder="Alvo de calorias"
-          value={newCaloriesTarget}
-          disabled={isDisabled}
-          onChange={(e) => setNewCaloriesTarget(e.target.value)}
-        />
-        <input
-          type="number"
-          name="proteinsTarget"
-          value={newProteinsTarget}
-          placeholder="Alvo de proteinas"
-          disabled={isDisabled}
-          onChange={(e) => setNewProteinsTarget(e.target.value)}
-        />
-        <button type="submit" disabled={isDisabled}>
-          CRIAR
-        </button>
-      </form>
+      <Form onSubmit={handleDayCreation}>
+        <LeftColumn>
+          <DateSelector newDate={newDate} setNewDate={setNewDate} disabled={isDisabled} />
+          <input
+            type="number"
+            name="caloriesTarget"
+            placeholder="Alvo de calorias"
+            value={newCaloriesTarget}
+            disabled={isDisabled}
+            onChange={(e) => setNewCaloriesTarget(e.target.value)}
+          />
+          <input
+            type="number"
+            name="proteinsTarget"
+            value={newProteinsTarget}
+            placeholder="Alvo de proteinas"
+            disabled={isDisabled}
+            onChange={(e) => setNewProteinsTarget(e.target.value)}
+          />
+        </LeftColumn>
+        <RightColumn>
+          <textarea
+            name="notes"
+            value={newNotes}
+            placeholder="Anotações"
+            disabled={isDisabled}
+            onChange={(e) => setNewNotes(e.target.value)}
+          />
+          <button type="submit" disabled={isDisabled}>
+            CRIAR
+          </button>
+        </RightColumn>
+      </Form>
     </Container>
   );
 }
 
 const Container = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'Roboto', sans-serif;
-  padding: 20px;
+  padding: 20px 8px;
   background-color: white;
   border: none;
   border-radius: 18px;
@@ -92,5 +96,103 @@ const Container = styled.div`
     color: #94167fff;
     font-size: 20px;
     margin-bottom: 12px;
+  }
+`;
+
+const LeftColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 250px;
+  margin-right: 8px;
+
+  input {
+    box-sizing: border-box;
+    height: 46px;
+    border: 2px solid #94167fff;
+    color: #94167fff;
+    border-radius: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 0 2px;
+    width: 140px;
+    text-align: center;
+
+    ::placeholder {
+      color: #94167fff;
+    }
+  }
+
+  input:disabled {
+    opacity: 0.5;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline-offset: 0px;
+    outline: none;
+
+    ::placeholder {
+      opacity: 0.5;
+    }
+  }
+`;
+
+const RightColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  textarea {
+    height: 100%;
+    border: 2px solid #94167fff;
+    color: #94167fff;
+    border-radius: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 6px;
+
+    ::placeholder {
+      color: #94167fff;
+    }
+  }
+
+  input:disabled {
+    opacity: 0.5;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline-offset: 0px;
+    outline: none;
+
+    ::placeholder {
+      opacity: 0.5;
+    }
+  }
+`;
+
+const Form = styled.form`
+  display: flex;
+
+  button {
+    height: 46px;
+    border-style: none;
+    border-radius: 4px;
+    background-color: #94167fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: white;
+    margin: 3px 0 18px 0;
+  }
+
+  button:disabled {
+    opacity: 0.5;
   }
 `;

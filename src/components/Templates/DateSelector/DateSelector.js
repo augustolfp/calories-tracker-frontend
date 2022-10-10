@@ -22,10 +22,12 @@ const Container = styled.div`
     height: 46px;
     border: 2px solid #94167fff;
     color: #94167fff;
-    border-radius: 5px;
+    border-radius: 18px;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     margin: 3px 0;
     padding: 0 6px;
+    width: 140px;
+    text-align: center;
   }
 `;

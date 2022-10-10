@@ -41,6 +41,7 @@ export default function DaySummaryTemplate(props) {
 }
 
 const Container = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;

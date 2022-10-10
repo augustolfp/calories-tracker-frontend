@@ -9,6 +9,18 @@ export default function SearchIngredients() {
   const { token, API_URL } = React.useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedResult, setSelectedResult] = useState([]);
+
+  function handleSelectedIngredient(props) {
+    setSelectedResult([
+      `${props.description}`,
+      `Quantidade-base: ${props.baseQty} g`,
+      `Proteinas: ${props.proteins} g`,
+      `Carboidratos: ${props.carbs}`,
+      `gorduras: ${props.fats} g`,
+      `Calorias: ${props.kcals} kcal`
+    ]);
+  }
 
   useEffect(() => {
     if (searchTerm !== '') {
@@ -27,9 +39,11 @@ export default function SearchIngredients() {
 
   function handleResults() {
     if (searchResults.length > 0 && searchTerm.length >= 3) {
-      return searchResults.map((result) => {
-        <h1>{result.description}</h1>;
-      });
+      return searchResults.map((result, index) => (
+        <ResultItem key={index} onClick={() => handleSelectedIngredient(result)}>
+          {result.description}
+        </ResultItem>
+      ));
     }
 
     if (searchResults.length === 0 && searchTerm.length >= 3) {
@@ -39,16 +53,25 @@ export default function SearchIngredients() {
 
   return (
     <Container>
-      <SearchInterface>
-        <DebounceInput
-          minLength={3}
-          debounceTimeout={300}
-          value={searchTerm}
-          placeholder="Pesquisar alimentos"
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <SearchResultBox>{handleResults()}</SearchResultBox>
-      </SearchInterface>
+      <SearchContainer>
+        <SearchInterface>
+          <DebounceInput
+            minLength={3}
+            debounceTimeout={300}
+            value={searchTerm}
+            placeholder="Pesquisar alimentos"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <ResultsContainer>{handleResults()}</ResultsContainer>
+        </SearchInterface>
+      </SearchContainer>
+      <SelectionContainer>
+        {selectedResult.length > 0 ? (
+          selectedResult.map((result, index) => <h1 key={index}>{result}</h1>)
+        ) : (
+          <h1></h1>
+        )}
+      </SelectionContainer>
     </Container>
   );
 }
@@ -56,10 +79,9 @@ export default function SearchIngredients() {
 const Container = styled.div`
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   align-items: center;
   font-family: 'Roboto', sans-serif;
-  padding: 20px 8px;
+  padding: 20px;
   background-color: white;
   border: none;
   border-radius: 18px;
@@ -70,23 +92,34 @@ const Container = styled.div`
 `;
 
 const SearchInterface = styled.div`
-  position: absolute;
-  top: 0;
-  background: #e7e7e7;
   border-radius: 8px;
 
   input {
     box-sizing: border-box;
-    width: 30vw;
     height: 46px;
+    width: 180px;
     border-radius: 8px;
-    border-style: none;
+    border-style: solid 1px;
     background-color: white;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #c6c6c6;
-    font-size: 19px;
+    font-size: 12px;
     padding: 0px 14px;
   }
 `;
 
-const SearchResultBox = styled.div``;
+const ResultsContainer = styled.div``;
+
+const SearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 210px;
+`;
+
+const SelectionContainer = styled.div``;
+
+const ResultItem = styled.h1`
+  :hover {
+    background-color: gray;
+  }
+`;

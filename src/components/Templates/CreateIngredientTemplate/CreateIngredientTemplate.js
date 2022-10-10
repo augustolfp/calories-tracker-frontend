@@ -48,68 +48,82 @@ export default function CreateIngredientTemplate(props) {
   }
 
   return (
-    <Container>
-      <h2>Adicionar Ingrediente</h2>
-      <form onSubmit={handleIngredientCreation}>
-        <input
-          type="text"
-          name="ingName"
-          placeholder="Nome do ingrediente"
-          value={ingName}
-          disabled={isDisabled}
-          onChange={(e) => setIngName(e.target.value)}
-        />
-        <input
-          type="number"
-          name="weight"
-          value={weight}
-          placeholder="peso em g"
-          disabled={isDisabled}
-          onChange={(e) => setWeight(e.target.value)}
-        />
-        <input
-          type="number"
-          name="carbs"
-          value={carbs}
-          placeholder="carbos em g"
-          disabled={isDisabled}
-          onChange={(e) => setCarbs(e.target.value)}
-        />
-        <input
-          type="number"
-          name="fats"
-          value={fats}
-          placeholder="gorduras em g"
-          disabled={isDisabled}
-          onChange={(e) => setFats(e.target.value)}
-        />
-        <input
-          type="number"
-          name="proteins"
-          value={proteins}
-          placeholder="proteinas em g"
-          disabled={isDisabled}
-          onChange={(e) => setProteins(e.target.value)}
-        />
-        <input
-          type="number"
-          name="kcals"
-          value={kcals}
-          placeholder="kcals em g"
-          disabled={isDisabled}
-          onChange={(e) => setKcals(e.target.value)}
-        />
-        <button type="submit" disabled={isDisabled}>
-          CRIAR
-        </button>
-      </form>
+    <>
+      <Container>
+        <h2>Adicionar Ingrediente</h2>
+        <form onSubmit={handleIngredientCreation}>
+          <input
+            type="text"
+            name="ingName"
+            placeholder="Nome do ingrediente"
+            value={ingName}
+            disabled={isDisabled}
+            onChange={(e) => setIngName(e.target.value)}
+          />
+          <input
+            type="number"
+            name="weight"
+            value={weight}
+            placeholder="peso em g"
+            disabled={isDisabled}
+            onChange={(e) => setWeight(e.target.value)}
+          />
+          <input
+            type="number"
+            name="carbs"
+            value={carbs}
+            placeholder="carbos em g"
+            disabled={isDisabled}
+            onChange={(e) => setCarbs(e.target.value)}
+          />
+          <input
+            type="number"
+            name="fats"
+            value={fats}
+            placeholder="gorduras em g"
+            disabled={isDisabled}
+            onChange={(e) => setFats(e.target.value)}
+          />
+          <input
+            type="number"
+            name="proteins"
+            value={proteins}
+            placeholder="proteinas em g"
+            disabled={isDisabled}
+            onChange={(e) => setProteins(e.target.value)}
+          />
+          <input
+            type="number"
+            name="kcals"
+            value={kcals}
+            placeholder="kcals em g"
+            disabled={isDisabled}
+            onChange={(e) => setKcals(e.target.value)}
+          />
+          <button type="submit" disabled={isDisabled}>
+            CRIAR
+          </button>
+        </form>
+      </Container>
       <SearchIngredients />
-    </Container>
+    </>
   );
 }
 
 const Container = styled.div`
+  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+  background-color: white;
+  border: none;
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 24px;
+  margin: 5px;
+  width: 460px;
 
   form {
     display: flex;

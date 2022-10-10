@@ -10,7 +10,7 @@ export default function MealTemplate(props) {
       <h2>Proteínas: {props.proteins} g</h2>
       <h2>Gorduras: {props.fats} g</h2>
       <h2>Calorias: {props.kcals} kCal</h2>
-      {props.ingredientList.length > 0 ? (
+      {props.ingredientList[0] !== null && props.ingredientList.length > 0 ? (
         props.ingredientList.map((ingredient, index) => (
           <IngredientTemplate key={index} {...ingredient} />
         ))

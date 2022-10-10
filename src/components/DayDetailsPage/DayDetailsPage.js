@@ -12,7 +12,7 @@ export default function DayDetailsPage() {
   return (
     <PageTemplate>
       <Container>
-        {dayData.dayMeals.length > 0 ? (
+        {dayData.dayMeals[0] !== null && dayData.dayMeals.length > 0 ? (
           dayData.dayMeals.map((meal, index) => <MealTemplate key={index} {...meal} />)
         ) : (
           <h2>Nenhuma refeição ainda!</h2>

@@ -4,6 +4,7 @@ import UserContext from '../../contexts/UserContext';
 import { useParams } from 'react-router-dom';
 import React from 'react';
 import MealTemplate from '../Templates/MealTemplate/MealTemplate';
+import CreateMealTemplate from '../Templates/CreateMealTemplate/CreateMealTemplate';
 export default function DayDetailsPage() {
   const { userData } = React.useContext(UserContext);
   const { id } = useParams();
@@ -17,6 +18,7 @@ export default function DayDetailsPage() {
         ) : (
           <h2>Nenhuma refeição ainda!</h2>
         )}
+        <CreateMealTemplate countedDayId={dayData.id} />
       </Container>
     </PageTemplate>
   );

@@ -1,6 +1,6 @@
 import '../assets/styles/reset.css';
 import '../assets/styles/index.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import React from 'react';
 import UserContext from '../contexts/UserContext';
 import SignInPage from './SignInPage/SignInPage';
@@ -17,6 +17,7 @@ export default function App() {
     <UserContext.Provider value={{ token, setToken, userData, setUserData, API_URL }}>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Navigate to="/sign-in" />} />
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/home" element={<HomePage />} />

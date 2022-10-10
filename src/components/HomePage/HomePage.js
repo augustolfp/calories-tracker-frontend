@@ -1,31 +1,28 @@
 import UserContext from '../../contexts/UserContext';
 import React from 'react';
-import { useEffect } from 'react';
-import axios from 'axios';
 import PageTemplate from '../Templates/PageTemplate/PageTemplate';
 import DaySummaryTemplate from '../Templates/DaySummaryTemplate/DaySummaryTemplate';
 import styled from 'styled-components';
 import CreateDayTemplate from '../Templates/CreateDayTemplate/CreateDayTemplate';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
-  const { token, API_URL, userData, setUserData } = React.useContext(UserContext);
+  const navigate = useNavigate();
+  const { userData, setUserData, token, API_URL } = React.useContext(UserContext);
 
-  useEffect(() => {
-    const countedDaysRequest = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/get-days-data`, token);
-        setUserData((userData) => ({
-          ...userData,
-          days: response.data
-        }));
-      } catch (error) {
-        alert(error.response.data);
-      }
-    };
-
-    countedDaysRequest();
+  React.useEffect(() => {
+    const response = axios.get(`${API_URL}/get-days-data`, token);
+    response.then((answer) => {
+      setUserData({
+        days: answer.data
+      });
+    });
+    response.catch((error) => {
+      console.log(error);
+      navigate('/sign-in');
+    });
   }, []);
-
   return (
     <PageTemplate>
       <CountedDaysContainer>

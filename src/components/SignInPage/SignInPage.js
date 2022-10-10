@@ -8,10 +8,26 @@ import PageTemplate from '../Templates/PageTemplate/PageTemplate';
 
 export default function SignInPage() {
   const navigate = useNavigate();
-  const { setToken, userData, setUserData, API_URL } = React.useContext(UserContext);
+  const { setToken, API_URL } = React.useContext(UserContext);
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [isDisabled, setIsDisabled] = React.useState(false);
+
+  React.useEffect(() => {
+    const savedToken = localStorage.getItem('token');
+
+    if (savedToken) {
+      const foundToken = JSON.parse(savedToken);
+      const checkToken = axios.get(`${API_URL}/get-days-data`, foundToken);
+      checkToken.then(() => {
+        setToken(foundToken);
+        navigate('/home');
+      });
+      checkToken.catch(() => {
+        return;
+      });
+    }
+  }, []);
 
   function handleLogin(event) {
     event.preventDefault();
@@ -25,13 +41,13 @@ export default function SignInPage() {
     const loginRequest = axios.post(`${API_URL}/sign-in`, body);
 
     loginRequest.then((answer) => {
-      setUserData(() => ({ ...userData, name: answer.data.name }));
-      setToken({
+      const token = {
         headers: {
           Authorization: `Bearer ${answer.data.token}`
         }
-      });
-
+      };
+      localStorage.setItem('token', JSON.stringify(token));
+      setToken(token);
       navigate('/home');
     });
 

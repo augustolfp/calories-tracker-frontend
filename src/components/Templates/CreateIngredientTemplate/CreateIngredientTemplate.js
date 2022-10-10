@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 import UserContext from '../../../contexts/UserContext';
 import axios from 'axios';
+import SearchIngredients from '../SearchIngredients/SearchIngredients';
 
 export default function CreateIngredientTemplate(props) {
   const { token, API_URL } = React.useContext(UserContext);
@@ -102,8 +103,16 @@ export default function CreateIngredientTemplate(props) {
           CRIAR
         </button>
       </form>
+      <SearchIngredients />
     </Container>
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+`;

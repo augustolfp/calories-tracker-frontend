@@ -5,7 +5,9 @@ export default function PageTemplate(props) {
 }
 
 const Container = styled.div`
+  margin: 40px;
+  display: flex;
+  justify-content: center;
   height: 100vh;
-  width: 100%;
-  background-image: linear-gradient(to right top, #c43cb8, #7e7ef2, #00a7ff, #00c5f1, #6adada);
+  width: 100vw;
 `;

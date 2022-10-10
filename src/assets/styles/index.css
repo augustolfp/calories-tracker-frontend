@@ -8,3 +8,9 @@
   src: local('ItcFeniceRegularOblique'),
     url('../fonts/ItcFeniceRegularOblique.otf') format('opentype');
 }
+
+body {
+  background-image: linear-gradient(to right top, #c43cb8, #7e7ef2, #00a7ff, #00c5f1, #6adada);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}

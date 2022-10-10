@@ -28,11 +28,13 @@ export default function CreateDayTemplate() {
     submitDay.then((response) => {
       console.log('sucesso!');
       console.log(response);
+      setIsDisabled(false);
     });
 
     submitDay.catch((error) => {
       console.log('Falhou!');
       console.log(error);
+      setIsDisabled(false);
     });
   }
 
